@@ -24,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		9C573625217682E000E72724 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		9C5736262176836A00E72724 /* typelist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = typelist.h; sourceTree = "<group>"; };
 		9C6CE66F21767B25001E4F45 /* MIPT_METAPROG_2018 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MIPT_METAPROG_2018; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C6CE67221767B25001E4F45 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +59,7 @@
 		9C6CE67121767B25001E4F45 /* MIPT_METAPROG_2018 */ = {
 			isa = PBXGroup;
 			children = (
+				9C5736262176836A00E72724 /* typelist.h */,
 				9C6CE67221767B25001E4F45 /* main.cpp */,
 				9C573625217682E000E72724 /* .gitignore */,
 			);

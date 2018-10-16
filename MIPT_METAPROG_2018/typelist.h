@@ -53,4 +53,31 @@ public:
 	typedef typename GetTypeAt<Tail, i - 1, DefaultType>::Result Result;
 };
 
+// Класс - "функция". Предназначен для удаления элементов из списка типов по индексу.
+template <class TList, class T> struct Erase;
+
+
+// Если TypeList состоит из NullType, то Result = NullType
+template <class T>
+class Erase<NullType, T> {
+public:
+	typedef NullType Result;
+};
+
+// Иначе, если T == TList::Head, то Result = TList::Tail
+template <class T, class Tail>
+class Erase<CTypeList<T, Tail>, T> {
+public:
+	typedef Tail Result;
+};
+
+
+// Иначе Result = { TList::Head, Erase<TList::Tail, T> }
+template <class Head, class Tail, class T>
+class Erase<CTypeList<Head, Tail>, T> {
+public:
+	typedef CTypeList<Head, typename Erase<Tail, T>::Result> Result;
+};
+
+
 #endif // TypeList_h
