@@ -40,14 +40,14 @@ public:
 	void Foo() {
 		std::cout << "calling Foo!" << std::endl;
 		if (watcher_ != nullptr) {
-			watcher_-> GetMessage();
+			watcher_->GetMessage();
 		}
 	}
 	
 	void Buz() {
 		std::cout << "calling Buz!" << std::endl;
 		if (watcher_ != nullptr) {
-			watcher_-> GetMessage();
+			watcher_->GetMessage();
 		}
 	}
 	
@@ -129,11 +129,11 @@ public:
 	ClassA(InterfaceB *object_ptr) : object_ptr_(object_ptr) {}
 	
 	void Foo() {
-		object_ptr_ -> Foo();
+		object_ptr_->Foo();
 	}
 	
 	void Buz() {
-		object_ptr_ -> Buz();
+		object_ptr_->Buz();
 	}
 	
 	void GetMessage() {
