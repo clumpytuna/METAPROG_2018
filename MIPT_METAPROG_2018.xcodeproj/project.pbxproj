@@ -45,6 +45,7 @@
 		9C6CE66621767B25001E4F45 = {
 			isa = PBXGroup;
 			children = (
+				9C573625217682E000E72724 /* .gitignore */,
 				9C6CE67121767B25001E4F45 /* MIPT_METAPROG_2018 */,
 				9C6CE67021767B25001E4F45 /* Products */,
 			);
@@ -63,7 +64,6 @@
 			children = (
 				9CE128D02177538300CF99A1 /* AdditionalTask1 */,
 				9CE128CC2177503D00CF99A1 /* Task1 */,
-				9C573625217682E000E72724 /* .gitignore */,
 			);
 			path = MIPT_METAPROG_2018;
 			sourceTree = "<group>";

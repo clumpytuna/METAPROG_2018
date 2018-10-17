@@ -28,8 +28,6 @@ public:
 	virtual void GetMessage() = 0;
 };
 
-template <Roles T> class C {};
-
 class InterfaceObservable {
 public:
 	virtual void Subscribe(InterfaceObserver* observer) = 0;
@@ -41,7 +39,6 @@ class ClassB : public InterfaceB {
 public:
 	void Foo() {
 		std::cout << "calling Foo!" << std::endl;
-		
 		if (watcher_ != nullptr) {
 			watcher_-> GetMessage();
 		}
@@ -49,7 +46,6 @@ public:
 	
 	void Buz() {
 		std::cout << "calling Buz!" << std::endl;
-		
 		if (watcher_ != nullptr) {
 			watcher_-> GetMessage();
 		}
@@ -63,6 +59,7 @@ private:
 	InterfaceObserver *watcher_ = nullptr;
 };
 
+template <Roles T> class C {};
 
 template <>
 class C<Roles::Observer> : public InterfaceObservable, public InterfaceObserver {
