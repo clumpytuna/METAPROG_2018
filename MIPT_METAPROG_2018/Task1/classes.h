@@ -8,7 +8,6 @@
 #include <iostream>
 #include <vector>
 
-
 #ifndef classes_h
 #define classes_h
 
@@ -20,39 +19,92 @@ enum class Roles {
 
 class InterfaceB {
 public:
-	virtual void foo() = 0;
-	virtual void buz() = 0;
+	virtual void Foo() = 0;
+	virtual void Buz() = 0;
 };
+
+class InterfaceObserver {
+public:
+	virtual void GetMessage() = 0;
+};
+
+template <Roles T> class C {};
+
+class InterfaceObservable {
+public:
+	virtual void Subscribe(InterfaceObserver* observer) = 0;
+	virtual void Unsubscribe(InterfaceObserver* observer) = 0;
+};
+
 
 class ClassB : public InterfaceB {
 public:
-	void foo() {
-		std::cout << "calling foo!" << std::endl;
+	void Foo() {
+		std::cout << "calling Foo!" << std::endl;
+		
+		if (watcher_ != nullptr) {
+			watcher_-> GetMessage();
+		}
 	}
 	
-	void buz() {
-		std::cout << "calling buz!" << std::endl;
+	void Buz() {
+		std::cout << "calling Buz!" << std::endl;
+		
+		if (watcher_ != nullptr) {
+			watcher_-> GetMessage();
+		}
 	}
+	
+	void becomeWatcher(InterfaceObserver *watcher) {
+		watcher_ = watcher;
+	}
+	
+private:
+	InterfaceObserver *watcher_ = nullptr;
 };
 
 
-template <Roles T> class C {};
+template <>
+class C<Roles::Observer> : public InterfaceObservable, public InterfaceObserver {
+public:
+	C(ClassB* classB) {
+		classB->becomeWatcher(this);
+	}
+	
+	void Subscribe(InterfaceObserver* observer) {
+		list_of_watchers_.push_back(observer);
+	}
+	
+	void Unsubscribe(InterfaceObserver* observer) {
+		list_of_watchers_.push_back(observer);
+	}
+	
+	void GetMessage() {
+		for (auto &&observer_ptr : list_of_watchers_) {
+			observer_ptr->GetMessage();
+		}
+	}
+	
+private:
+	std::vector<InterfaceObserver *> list_of_watchers_;
+};
+
 
 template <>
 class C <Roles::Proxy> : public InterfaceB {
 public:
-	C(ClassB* object_ptr) : object_ptr_(object_ptr) {};
+	C(InterfaceB* object_ptr) : object_ptr_(object_ptr) {};
 	
-	void foo() {
-		object_ptr_ -> foo();
+	void Foo() {
+		object_ptr_->Foo();
 	}
 	
-	void buz() {
-		object_ptr_ -> buz();
+	void Buz() {
+		object_ptr_->Buz();
 	}
 	
 private:
-	ClassB* object_ptr_;
+	InterfaceB* object_ptr_;
 };
 
 
@@ -61,32 +113,39 @@ class C<Roles::Mediator> : public InterfaceB {
 public:
 	C(std::vector <ClassB*> &ptr_array) : ptr_array_(ptr_array) {};
 	
-	void foo() {
-		ptr_array_[random() % ptr_array_.size()]->foo();
+	void Foo() {
+		ptr_array_[random() % ptr_array_.size()]->Foo();
 	}
 	
-	void buz() {
-		ptr_array_[random() % ptr_array_.size()]->buz();
+	void Buz() {
+		ptr_array_[random() % ptr_array_.size()]->Buz();
 	}
 	
 private:
 	std::vector <ClassB*> ptr_array_;
 };
 
-class ClassA : public InterfaceB {
+class ClassA : public InterfaceB, public InterfaceObserver {
 public:
+	ClassA(const std::string& name) : name_(name) {};
+	
 	ClassA(InterfaceB *object_ptr) : object_ptr_(object_ptr) {}
 	
-	void foo() {
-		object_ptr_ -> foo();
+	void Foo() {
+		object_ptr_ -> Foo();
 	}
 	
-	void buz() {
-		object_ptr_ -> buz();
+	void Buz() {
+		object_ptr_ -> Buz();
+	}
+	
+	void GetMessage() {
+		std::cout << "message recieved by " << name_<< std::endl;
 	}
 	
 private:
 	InterfaceB* object_ptr_;
+	const std::string name_;
 };
 
 #endif /* classes_h */

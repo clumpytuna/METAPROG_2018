@@ -16,8 +16,8 @@ void Proxy() {
 	C<Roles::Proxy> c(&b);
 	ClassA A(&c);
 	
-	A.foo();
-	A.buz();
+	A.Foo();
+	A.Buz();
 }
 
 void Mediator() {
@@ -33,8 +33,22 @@ void Mediator() {
 	
 	ClassA A(&c);
 	
-	A.foo();
-	A.buz();
+	A.Foo();
+	A.Buz();
+}
+
+void Observer() {
+	ClassB observable;
+	
+	C<Roles::Observer> C(&observable);
+	
+	ClassA Frist("First");
+	ClassA Second("Second");
+	
+	C.Subscribe(&Frist);
+	C.Subscribe(&Second);
+	
+	observable.Buz();
 }
 
 int main(int argc, const char * argv[]) {
@@ -44,6 +58,9 @@ int main(int argc, const char * argv[]) {
 	
 	// second case
 	Mediator();
+	
+	//third case
+	Observer();
 	
 	return 0;
 }

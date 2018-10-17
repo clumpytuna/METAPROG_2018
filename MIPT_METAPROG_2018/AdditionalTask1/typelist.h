@@ -32,7 +32,7 @@ class NullType {};
 // Пример использования:
 // typedef typename GetTypeAt<TypeList, 0, NullType>::Result FirstParameterType;
 template <class TList, unsigned int index, typename DefaultType = NullType>
-class GetTypeAt{
+class GetTypeAt {
 public:
 	typedef DefaultType Result;
 };
