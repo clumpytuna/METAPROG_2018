@@ -28,6 +28,7 @@
 		9C6CE66F21767B25001E4F45 /* MIPT_METAPROG_2018 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MIPT_METAPROG_2018; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C6CE67221767B25001E4F45 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		9CE128CD2177534D00CF99A1 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		9CE128D1217792B500CF99A1 /* classes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = classes.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				9CE128CD2177534D00CF99A1 /* main.cpp */,
+				9CE128D1217792B500CF99A1 /* classes.h */,
 			);
 			path = Task1;
 			sourceTree = "<group>";
