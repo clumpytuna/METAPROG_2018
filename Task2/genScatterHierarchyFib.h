@@ -11,7 +11,7 @@
 // Класс - "функция". Генерирует "scattered" - иерархию классов, веткой,
 // которой является линейная иерархия, классов указанных в CTypeList.
 
-template <class CTypeList, template <class, class> class Unit, int number=0>
+template <class CTypeList, template <class, class> class Unit, int number = 0>
 class CGenScatterHierarchyFib;
 
 template <class H, class T, template <class, class> class Unit, int number>
