@@ -54,6 +54,8 @@ public:
 };
 
 // Класс - "функция". Предназначен для удаления элементов из списка типов по индексу.
+// typedef typename Erase<TypeList, T>::Result
+// где Result - новый typelist
 template <class TList, class T> struct Erase;
 
 
