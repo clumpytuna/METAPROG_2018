@@ -29,7 +29,6 @@ template<class Head, class Tail>
 class Reader<CTypeList<Head, Tail>>
 {
 public:
-	
 	Reader() = default;
 	
 	static void readNextElement(std::ifstream& stream, char* position) {
