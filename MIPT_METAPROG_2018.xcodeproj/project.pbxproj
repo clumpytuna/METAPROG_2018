@@ -81,7 +81,6 @@
 			children = (
 				9C573625217682E000E72724 /* .gitignore */,
 				9C6CE67121767B25001E4F45 /* MIPT_METAPROG_2018 */,
-				9C745CF021D699B600552AB2 /* Task3 */,
 				9C6CE67021767B25001E4F45 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -101,6 +100,7 @@
 				9CE128D02177538300CF99A1 /* AdditionalTask1_2 */,
 				9CE128CC2177503D00CF99A1 /* Task1 */,
 				9C34935F21B43EBB007ABFD7 /* Task2 */,
+				9C745CF021D699B600552AB2 /* Task3 */,
 			);
 			path = MIPT_METAPROG_2018;
 			sourceTree = "<group>";
