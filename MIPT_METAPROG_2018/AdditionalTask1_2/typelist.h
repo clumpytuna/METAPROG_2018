@@ -53,10 +53,29 @@ public:
 	typedef typename GetTypeAt<Tail, i - 1, DefaultType>::Result Result;
 };
 
+///////////////////////////////////////////////////////////////////////////////////
+
+// Класс - "функция". Предназначен для получения длины тайплиста.
+
+template<class Type>
+class Length {
+public:
+	enum { value = 0 };
+};
+
+template<class Head, class Tail>
+class Length<CTypeList<Head, Tail> > {
+public:
+	enum { value = 1 + Length<Tail>::value };
+};
+
+
+
+
 // Класс - "функция". Предназначен для удаления элементов из списка типов по индексу.
 // typedef typename Erase<TypeList, T>::Result
 // где Result - новый typelist
-template <class TList, class T> struct Erase;
+template <class TList, class T> class Erase;
 
 
 // Если TypeList состоит из NullType, то Result = NullType
